@@ -39,8 +39,8 @@
                 return true;
             },
             clearText : function(fn,ev){
-                var ev = $(ev),
-                    erId = ev.attr("id");
+                var id = $(ev),
+                    erId = id.attr("id");
                 $("#ErrorMsg-"+erId).hide();
             },
             phone : {
