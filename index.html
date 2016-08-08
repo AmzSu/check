@@ -8,7 +8,6 @@
         input{outline: none;padding: 10px;border:1px solid #666;width: 200px;}
         span{color:#f00;}
         .error-msg{display: none;}
-        div{height:100px;width:100px; position: relative;}
     </style>
 </head>
 <body>
@@ -44,6 +43,16 @@
                     erId = id.attr("id");
                 $("#ErrorMsg-"+erId).hide();
             },
+            limit01 : function(fn,ev){//只能输入数字
+                var id = $(ev),
+                    v = id.val().replace(/[^(\d)$]/g,"");
+                id.val(v);
+            },
+            limit02 : function(fn,ev){//每4个字符添加空格
+                var id = $(ev),
+                    v = id.val().replace(/(\d{4})/g,"$1 ").replace(/\s*$/,"");
+                id.val(v);
+            },
             phone : {
                 id : "phone",
                 pn : "^(1[0-9])[0-9]{9}$",
@@ -73,6 +82,8 @@
                 "#phone/blur" : "inputCheckFn,phone",
                 "#bank/blur" : "inputCheckFn,bank",
                 "input/keydown" : "clearText",
+                "input/keyup" : "limit01",
+                "#bank/keyup" : "limit02",
                 "button/click" : "submit"
             },
             onEv : function(){
@@ -100,5 +111,8 @@
             e.init();
         });
     }();
+    setInterval(function(){
+        //console.log(Math.random());
+    },500);
 </script>
 </html>
