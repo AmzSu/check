@@ -36,13 +36,14 @@
                 }else if(!obj.elseCheck(val,$ErrorMsg)) {//其他校验,如没有可以去掉
                     return false;
                 }
+                $ErrorMsg.hide();
                 return true;
             },
-            clearText : function(fn,ev){
+            /*clearText : function(fn,ev){
                 var id = $(ev),
                     erId = id.attr("id");
                 $("#ErrorMsg-"+erId).hide();
-            },
+            },*/
             limit01 : function(fn,ev){//只能输入数字
                 var id = $(ev),
                     v = id.val().replace(/[^(\d)$]/g,"");
@@ -81,7 +82,7 @@
             ev : {
                 "#phone/blur" : "inputCheckFn,phone",
                 "#bank/blur" : "inputCheckFn,bank",
-                "input/keydown" : "clearText",
+                //"input/keydown" : "clearText",
                 "input/keyup" : "limit01",
                 "#bank/keyup" : "limit02",
                 "button/click" : "submit"
