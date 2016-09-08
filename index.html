@@ -92,6 +92,7 @@
                     var ev = k.split("/"),
                         fn = v.split(",");
                     $(ev[0]).on(ev[1],function(e){
+                        var e = e || window.event;
                         t[fn[0]](t[fn[1]],e.target);
                     });
                 })
